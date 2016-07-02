@@ -1,0 +1,209 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+	
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="Gursimran Singh" content="">
+
+		<title>
+			Welcome ADMIN !!
+		</title>
+
+		<!-- Bootstrap Core CSS -->
+		<link href="./css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- Custom CSS -->
+		<link href="./css/1-col-portfolio.css" rel="stylesheet">
+	</head>
+
+	<body>
+
+		<!-- Navigation -->
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li>
+							<a href="#">
+								BackEnd Services
+							</a>
+						</li>
+						<li>
+							<a href="./Contact.html">
+								Contact
+							</a>
+						</li>
+					</ul>
+					<p class="navbar-text navbar-right">
+						<!-- Replace by Dynamic Code to generate name of the logged in user -->
+						<a class="navbar-link" href="https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:8080/PhD_Registration_Form_Servlet/Homepage.html">
+							Logout
+						</a>
+					</p>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container -->
+		</nav>
+
+		<!-- Page Content -->
+		<div class="container">
+
+			<!-- Page Heading -->
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">
+						Admin Home
+					</h1>
+				</div>
+			</div>
+				<!-- /.row -->
+
+			<!-- One -->
+			<form action="SetFilters" method="post">
+				<div class="row">
+					<div class="col-md-7">
+						<a href="#">
+							<img class="img-responsive" src="http://images2.alphacoders.com/458/458435.jpg" alt="COMPLETE DATABASE">
+						</a>
+					</div>
+					<div class="col-md-5">
+						<h3>
+							View Complete Database
+						</h3>
+						<p>
+							Shows the Complete Database of Registered Users.
+						</p>
+						<button type="submit" class="btn btn-primary">
+							Show DB
+							<span class="glyphicon glyphicon-chevron-right"></span>
+						</button>
+					</div>
+				</div>
+			</form>
+			<!-- /.row -->
+
+			<hr>
+
+			<!-- Two -->
+			<form action="CSV_Importer" method="post" enctype="multipart/form-data">
+				<div class="row">
+					<div class="col-md-7">
+						<a href="#">
+							<img class="img-responsive" src="http://images.techhive.com/images/article/2015/03/macbook-usb-c-cable-big-100572542-orig.png" alt="APPLY FILTERS">
+						</a>
+					</div>
+					<div class="col-md-5">
+						<h3>
+							Import Data
+						</h3>
+						<p>
+							Import data into the Database. The data is not appended into the Database, but Overwritten.
+							<br/>
+							NOTE: Only ".csv" are supported as of now.
+						</p>
+						<button type="button" data-toggle="collapse" data-target="#importcollapse" class="btn btn-primary">
+							Import
+							<span class="glyphicon glyphicon-chevron-right"></span>
+						</button>
+					</div>
+				</div>
+				<div id="importcollapse" class="collapse">
+					<input type="file" class="btn btn-success" name="csvuploader" />
+					<br />
+					<button type="submit" class="btn btn-primary">Upload</button>
+				</div>
+			</form>
+			<!-- /.row -->
+
+			<hr>
+
+			<!-- Three -->
+			<div class="row">
+				<div class="col-md-7">
+					<a href="#">
+						<img class="img-responsive" src="https://www.twelvesouth.com/uploads/images/gallery/baselift_workspace4_gallery.jpg" alt="APPLY FILTERS">
+					</a>
+				</div>
+				<div class="col-md-5">
+					<h3>
+						Apply Filters
+					</h3>
+					<p>
+						Choose specific candidates by applying certain Filters to the Database.
+					</p>
+					<a class="btn btn-primary" href="http://localhost:8080/PhD_Registration_Form_Servlet/Filter%20Selection.html">
+						Filter Data
+						<span class="glyphicon glyphicon-chevron-right"></span>
+					</a>
+				</div>
+			</div>
+			<!-- /.row -->
+
+			<hr>
+
+			<!-- Four -->
+			<form action="DropDatabase" method="get">
+				<div class="row">
+					<div class="col-md-7">
+						<a href="#">
+							<img class="img-responsive" src="http://hdwallpapersfit.com/wp-content/uploads/2015/03/danger-hd-wallpaper.jpg" alt="">
+						</a>
+					</div>
+					<div class="col-md-5">
+						<h3>
+							Clear Database
+						</h3>
+						<p>
+							This will clear the entire Database. This is not undoable. Data once lost can not be recovered. Proceed if you know what you are doing !!.
+						</p>
+						<button type="submit" class="btn btn-danger">
+							Delete DB
+							<span class="glyphicon glyphicon-chevron-right"></span>
+						</button>
+					</div>
+				</div>
+			</form>
+			<!-- /.row -->
+
+			<hr>
+			<!-- /.row -->
+
+			<!-- Footer -->
+			<footer>
+				<div class="row">
+					<div class="col-lg-12">
+						<p>
+							Copyright &copy; Gursimran Singh
+						</p>
+					</div>
+				</div>
+				<!-- /.row -->
+			</footer>
+
+		</div>
+		<!-- /.container -->
+
+		<!-- jQuery -->
+		<script src="./js/jquery.js"></script>
+		<!-- Bootstrap Core JavaScript -->
+		<script src="./js/bootstrap.min.js"></script>
+
+	</body>
+
+</html>

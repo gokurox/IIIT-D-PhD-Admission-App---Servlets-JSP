@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="Gursimran Singh" content="">
+
+		<title>
+			Filter Selection
+		</title>
+
+		<!-- Bootstrap Core CSS -->
+		<link href="./css/bootstrap.min.css" rel="stylesheet" />
+
+		<!-- Custom CSS -->
+		<link href="./css/1-col-portfolio.css" rel="stylesheet" />
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+		<!-- Load jQuery JS -->
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+		<!-- Load jQuery UI Main JS  -->
+		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+		<!-- Load SCRIPT.JS which will create datepicker for input field  -->
+	</head>
+
+	<body>
+
+		<!-- Navigation -->
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li>
+							<a href="./Contact.html">
+								Contact
+							</a>
+						</li>
+					</ul>
+					<p class="navbar-text navbar-right">
+						<!-- Replace by Dynamic Code to generate name of the logged in user -->
+						<a class="navbar-link" href="https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:8080/PhD_Registration_Form_Servlet/Homepage.html">
+							Logout
+						</a>
+					</p>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container -->
+		</nav>
+
+		<br/>
+		<br/>
+
+		<div class="container">
+			<ul class="nav nav-pills">
+				<li class="active"><a data-toggle="pill" href="#home">Personal Information</a></li>
+				<li><a data-toggle="pill" href="#menu1">Educational information</a></li>
+				<li><a data-toggle="pill" href="#menu2">Submit</a></li>
+			</ul>
+
+			<form class="form-horizontal" role="form" id="filterform" action="SetFilters" method="post">
+				<div class="tab-content">
+					<div id="home" class="tab-pane fade in active">
+						<br/>
+						<div class="container">
+							<div class="form-group">
+								<label class="control-label col-md-2" for="PI_eMail">
+									Email:
+								</label>
+								<div class="col-md-6">
+									<input type="email" class="form-control" id="PI_eMail" name="PI_eMail" placeholder="Enter Email" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-md-2" for="PI_Name">
+									Name:
+								</label>
+								<div class="col-md-6">          
+									<input type="text" class="form-control" id="PI_Name" name="PI_Name" placeholder="Enter Name" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-md-2" for="PI_enrollmentNumber">
+									Enrollment Number:
+								</label>
+								<div class="col-md-6">
+									<input type="text" class="form-control" id="PI_enrollmentNumber" name="PI_enrollmentNumber" placeholder="Enter Enrollment Number" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-md-2" for="PI_category">
+									Category:
+								</label>
+								<div class="col-md-6">
+									<select class="form-control" id="PI_category" name="PI_category">
+										<option value="NULL">----- NO CATEGORY FILTER -----</option>
+										<option value="General">General</option>
+										<option value="OBC">O.B.C.</option>
+										<option value="SC">S.C.</option>
+										<option value="SC">S.T.</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-md-2" for="PI_Gender">
+									Gender:
+								</label>
+								<div class="col-md-6">
+									<div class="col-md-2 radio">
+										<input type="radio" id="PI_Gender_M" name="PI_Gender" value="Male" /> Male
+									</div>
+									<div class="col-md-2 radio">
+										<input type="radio" id="PI_Gender_F" name="PI_Gender" value="Female" /> Female
+									</div>
+									<div class="col-md-4 radio">
+										<input type="radio" id="PI_Gender_NOF" name="PI_Gender" value="NULL" checked /> No Gender Filter
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-md-2" for="PI_phyDisabled">
+									Physically Disabled:
+								</label>
+								<div class="col-md-6">
+									<div class="col-md-2 radio">
+										<input type="radio" id="PI_phyDisabled_Y" name="PI_phyDisabled" value="Yes" /> Yes
+									</div>
+									<div class="col-md-2 radio">
+										<input type="radio" id="PI_phyDisabled_N" name="PI_phyDisabled" value="No" /> No
+									</div>
+									<div class="col-md-4 radio">
+										<input type="radio" id="PI_phyDisabled_NOF" name="PI_phyDisabled" value="NULL" checked /> No Phy. Disability Filter
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-md-2" for="PI_DoB">
+									Date Of Birth:
+								</label>
+								<div class="col-md-6">
+									<div class="col-md-2 radio">
+										<input type="radio" id="PI_DoB_Before" name="PI_DoB" value="Before" /> Before
+									</div>
+									<div class="col-md-2 radio" >
+										<input type="radio" id="PI_DoB_On" name="PI_DoB" value="On" /> On
+									</div>
+									<div class="col-md-2 radio">
+										<input type="radio" id="PI_DoB_After" name="PI_DoB" value="After" /> After
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-md-2" for="PI_DoB_DatePicker">
+								</label>
+								<div class="col-md-6">
+									<input type="date" class="form-control" id="PI_DoB_DatePicker" name="PI_DoB_DatePicker" placeholder="DD-MM-YYYY" />
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="menu1" class="tab-pane fade">
+						<br/>
+						<div class="form-group">
+							<label class="control-label col-md-2">
+								PhD Stream:
+							</label>
+							<div class="col-md-6">
+								<select class="form-control" name="EI_phd_stream">
+									<option value="NULL">
+										NO_PHD_STREAM_FILTER
+									</option>
+									<option value="Computer Science">
+										Computer Science
+									</option>
+									<option value="Electronics and Communication">
+										Electronics and Communication
+									</option>
+									<option value="Computational Biology">
+										Computational Biology
+									</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2">
+								Graduation Degree:
+							</label>
+							<div class="col-md-6">
+								<select class="form-control" name="EI_grad_degree">
+									<option value="NULL">
+										NO_GRADUATION_DEGREE_FILTER
+									</option>
+									<option value="B.Tech">
+										B.Tech
+									</option>
+									<option value="M.Tech">
+										M.Tech
+									</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2" for="EI_postGradDegree">
+								Post Graduation Degree:
+							</label>
+							<div class="col-md-6">
+								<select class="form-control" id="EI_postGradDegree" name="EI_postGradDegree">
+									<option value="NULL">
+										NO_POST_GRADUATION_DEGREE_FILTER
+									</option>
+									<option value="B.Tech">
+										B.Tech
+									</option>
+									<option value="M.Tech">
+										M.Tech
+									</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2" for="EI_XBoard">
+								Class X Board:
+							</label>
+							<div class="col-md-6">
+								<select class="form-control" id="EI_XBoard" name="EI_XBoard">
+									<option value="NULL">
+										NO_XII_BOARD_FILTER
+									</option>
+									<option value="CBSE">
+										CBSE
+									</option>
+									<option value="ICSE">
+										ICSE
+									</option>
+									<option value="State Board">
+										State Board
+									</option>
+									<option value="Andhra Pradesh Board of Intermediate Education">
+										Andhra Pradesh Board of Intermediate Education
+									</option>
+									<option value="Andhra Pradesh Board of Secondary Education">
+										Andhra Pradesh Board of Secondary Education
+									</option>
+									<option value="Board of Higher Secondary Education, Delhi">
+										Board of Higher Secondary Education, Delhi
+									</option>
+									<option value="Assam Board of Secondary Education">
+										Assam Board of Secondary Education
+									</option>
+									<option value="Bihar School Examination Board">
+										Bihar School Examination Board
+									</option>
+									<option value="Board of Youth Education India">
+										Board of Youth Education India
+									</option>
+									<option value="Board of School Education, Haryana">
+										Board of School Education, Haryana
+									</option>
+									<option value="Board of Secondary Education, Madhya Pradesh">
+										Board of Secondary Education, Madhya Pradesh
+									</option>
+									<option value="Board of Secondary Education Madhya Bharat Gwalior">
+										Board of Secondary Education Madhya Bharat Gwalior
+									</option>
+									<option value="Board of Secondary Education, Rajasthan">
+										Board of Secondary Education, Rajasthan
+									</option>
+									<option value="Chhattisgarh Board of Secondary Education">
+										Chhattisgarh Board of Secondary Education
+									</option>
+									<option value="Central Board of Secondary Education">
+										Central Board of Secondary Education
+									</option>
+									<option value="Central Board Of Patna, Bihar">
+										Central Board Of Patna, Bihar
+									</option>
+									<option value="Central Board Of Education Ajmer New Delhi">
+										Central Board Of Education Ajmer New Delhi
+									</option>
+									<option value="Goa Board of Secondary & Higher Secondary Education">
+										Goa Board of Secondary & Higher Secondary Education
+									</option>
+									<option value="Gujarat Secondary Education Board">
+										Gujarat Secondary Education Board
+									</option>
+									<option value="Himachal Pradesh Board of School Education">
+										Himachal Pradesh Board of School Education
+									</option>
+									<option value="Indian Board of Science Education(not recognized)">
+										Indian Board of Science Education(not recognized)
+									</option>
+									<option value="Indian Board of School Education">
+										Indian Board of School Education
+									</option>
+									<option value="Indian Board of Computer Education">
+										Indian Board of Computer Education
+									</option>
+									<option value="J&K State Board of School Education">
+										J&K State Board of School Education
+									</option>
+									<option value="Jharkhand Academic Council">
+										Jharkhand Academic Council
+									</option>
+									<option value="Karnataka Board of the Pre-University Education">
+										Karnataka Board of the Pre-University Education
+									</option>
+									<option value="Karnataka Secondary Education Examination Board">
+										Karnataka Secondary Education Examination Board
+									</option>
+									<option value="Kerala Board of Public Examinations">
+										Kerala Board of Public Examinations
+									</option>
+									<option value="Maharashtra State Board of Secondary and Higher Secondary Education">
+										Maharashtra State Board of Secondary and Higher Secondary Education
+									</option>
+									<option value="Manipur Board of Secondary Education">
+										Manipur Board of Secondary Education
+									</option>
+									<option value="Manipur Council of Higher Secondary Education">
+										Manipur Council of Higher Secondary Education
+									</option>
+									<option value="Meghalaya Board of School Education">
+										Meghalaya Board of School Education
+									</option>
+									<option value="Mizoram Board of School Education">
+										Mizoram Board of School Education
+									</option>
+									<option value="North East National Board Of School Education (NENBSE)">
+										North East National Board Of School Education (NENBSE)
+									</option>
+									<option value="Northwest Accreditation Commission">
+										Northwest Accreditation Commission
+									</option>
+									<option value="Nagaland Board of School Education">
+										Nagaland Board of School Education
+									</option>
+									<option value="National Institute of Open Schooling">
+										National Institute of Open Schooling
+									</option>
+									<option value="Orissa Board of Secondary Education">
+										Orissa Board of Secondary Education
+									</option>
+									<option value="Orissa Council of Higher Secondary Education">
+										Orissa Council of Higher Secondary Education
+									</option>
+									<option value="Punjab School Education Board">
+										Punjab School Education Board
+									</option>
+									<option value="Rajasthan Board of Secondary Education">
+										Rajasthan Board of Secondary Education
+									</option>
+									<option value="Tamil Nadu Board of Higher Secondary Education">
+										Tamil Nadu Board of Higher Secondary Education
+									</option>
+									<option value="Tamil Nadu Board of Secondary Education">
+										Tamil Nadu Board of Secondary Education
+									</option>
+									<option value="Tamilnadu Council for Open and Distance Learning">
+										Tamilnadu Council for Open and Distance Learning
+									</option>
+									<option value="Tripura Board of Secondary Education">
+										Tripura Board of Secondary Education
+									</option>
+									<option value="Telangana Board of Intermediate Education">
+										Telangana Board of Intermediate Education
+									</option>
+									<option value="Telangana Board of Secondary Education">
+										Telangana Board of Secondary Education
+									</option>
+									<option value="Uttar Pradesh Board of High School and Intermediate Education">
+										Uttar Pradesh Board of High School and Intermediate Education
+									</option>
+									<option value="Sampurnanand Sanskrit Vishwavidyalaya Varanasi Uttar Pradesh">
+										Sampurnanand Sanskrit Vishwavidyalaya Varanasi Uttar Pradesh
+									</option>
+									<option value="Uttarakhand Board of School Education">
+										Uttarakhand Board of School Education
+									</option>
+									<option value="West Bengal Board of Secondary Education">
+										West Bengal Board of Secondary Education
+									</option>
+									<option value="West Bengal Council of Higher Secondary Education">
+										West Bengal Council of Higher Secondary Education
+									</option>
+									<option value="West Bengal State Council of Vocational Education and Training">
+										West Bengal State Council of Vocational Education and Training
+									</option>
+									<option value="Board of Secondary Education Kant Shahjahanpur Uttar Pradesh">
+										Board of Secondary Education Kant Shahjahanpur Uttar Pradesh
+									</option>
+									<option value="The West Bengal Council of Rabindra Open Schooling">
+										The West Bengal Council of Rabindra Open Schooling
+									</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2" for="EI_XIIBoard">
+								Class XII Board:
+							</label>
+							<div class="col-md-6">
+								<select class="form-control" id="EI_XIIBoard" name="EI_XIIBoard">
+									<option value="NULL">
+										NO_XII_BOARD_FILTER
+									</option>
+									<option value="CBSE">
+										CBSE
+									</option>
+									<option value="ICSE">
+										ICSE
+									</option>
+									<option value="State Board">
+										State Board
+									</option>
+									<option value="Andhra Pradesh Board of Intermediate Education">
+										Andhra Pradesh Board of Intermediate Education
+									</option>
+									<option value="Andhra Pradesh Board of Secondary Education">
+										Andhra Pradesh Board of Secondary Education
+									</option>
+									<option value="Board of Higher Secondary Education, Delhi">
+										Board of Higher Secondary Education, Delhi
+									</option>
+									<option value="Assam Board of Secondary Education">
+										Assam Board of Secondary Education
+									</option>
+									<option value="Bihar School Examination Board">
+										Bihar School Examination Board
+									</option>
+									<option value="Board of Youth Education India">
+										Board of Youth Education India
+									</option>
+									<option value="Board of School Education, Haryana">
+										Board of School Education, Haryana
+									</option>
+									<option value="Board of Secondary Education, Madhya Pradesh">
+										Board of Secondary Education, Madhya Pradesh
+									</option>
+									<option value="Board of Secondary Education Madhya Bharat Gwalior">
+										Board of Secondary Education Madhya Bharat Gwalior
+									</option>
+									<option value="Board of Secondary Education, Rajasthan">
+										Board of Secondary Education, Rajasthan
+									</option>
+									<option value="Chhattisgarh Board of Secondary Education">
+										Chhattisgarh Board of Secondary Education
+									</option>
+									<option value="Central Board of Secondary Education">
+										Central Board of Secondary Education
+									</option>
+									<option value="Central Board Of Patna, Bihar">
+										Central Board Of Patna, Bihar
+									</option>
+									<option value="Central Board Of Education Ajmer New Delhi">
+										Central Board Of Education Ajmer New Delhi
+									</option>
+									<option value="Goa Board of Secondary & Higher Secondary Education">
+										Goa Board of Secondary & Higher Secondary Education
+									</option>
+									<option value="Gujarat Secondary Education Board">
+										Gujarat Secondary Education Board
+									</option>
+									<option value="Himachal Pradesh Board of School Education">
+										Himachal Pradesh Board of School Education
+									</option>
+									<option value="Indian Board of Science Education(not recognized)">
+										Indian Board of Science Education(not recognized)
+									</option>
+									<option value="Indian Board of School Education">
+										Indian Board of School Education
+									</option>
+									<option value="Indian Board of Computer Education">
+										Indian Board of Computer Education
+									</option>
+									<option value="J&K State Board of School Education">
+										J&K State Board of School Education
+									</option>
+									<option value="Jharkhand Academic Council">
+										Jharkhand Academic Council
+									</option>
+									<option value="Karnataka Board of the Pre-University Education">
+										Karnataka Board of the Pre-University Education
+									</option>
+									<option value="Karnataka Secondary Education Examination Board">
+										Karnataka Secondary Education Examination Board
+									</option>
+									<option value="Kerala Board of Public Examinations">
+										Kerala Board of Public Examinations
+									</option>
+									<option value="Maharashtra State Board of Secondary and Higher Secondary Education">
+										Maharashtra State Board of Secondary and Higher Secondary Education
+									</option>
+									<option value="Manipur Board of Secondary Education">
+										Manipur Board of Secondary Education
+									</option>
+									<option value="Manipur Council of Higher Secondary Education">
+										Manipur Council of Higher Secondary Education
+									</option>
+									<option value="Meghalaya Board of School Education">
+										Meghalaya Board of School Education
+									</option>
+									<option value="Mizoram Board of School Education">
+										Mizoram Board of School Education
+									</option>
+									<option value="North East National Board Of School Education (NENBSE)">
+										North East National Board Of School Education (NENBSE)
+									</option>
+									<option value="Northwest Accreditation Commission">
+										Northwest Accreditation Commission
+									</option>
+									<option value="Nagaland Board of School Education">
+										Nagaland Board of School Education
+									</option>
+									<option value="National Institute of Open Schooling">
+										National Institute of Open Schooling
+									</option>
+									<option value="Orissa Board of Secondary Education">
+										Orissa Board of Secondary Education
+									</option>
+									<option value="Orissa Council of Higher Secondary Education">
+										Orissa Council of Higher Secondary Education
+									</option>
+									<option value="Punjab School Education Board">
+										Punjab School Education Board
+									</option>
+									<option value="Rajasthan Board of Secondary Education">
+										Rajasthan Board of Secondary Education
+									</option>
+									<option value="Tamil Nadu Board of Higher Secondary Education">
+										Tamil Nadu Board of Higher Secondary Education
+									</option>
+									<option value="Tamil Nadu Board of Secondary Education">
+										Tamil Nadu Board of Secondary Education
+									</option>
+									<option value="Tamilnadu Council for Open and Distance Learning">
+										Tamilnadu Council for Open and Distance Learning
+									</option>
+									<option value="Tripura Board of Secondary Education">
+										Tripura Board of Secondary Education
+									</option>
+									<option value="Telangana Board of Intermediate Education">
+										Telangana Board of Intermediate Education
+									</option>
+									<option value="Telangana Board of Secondary Education">
+										Telangana Board of Secondary Education
+									</option>
+									<option value="Uttar Pradesh Board of High School and Intermediate Education">
+										Uttar Pradesh Board of High School and Intermediate Education
+									</option>
+									<option value="Sampurnanand Sanskrit Vishwavidyalaya Varanasi Uttar Pradesh">
+										Sampurnanand Sanskrit Vishwavidyalaya Varanasi Uttar Pradesh
+									</option>
+									<option value="Uttarakhand Board of School Education">
+										Uttarakhand Board of School Education
+									</option>
+									<option value="West Bengal Board of Secondary Education">
+										West Bengal Board of Secondary Education
+									</option>
+									<option value="West Bengal Council of Higher Secondary Education">
+										West Bengal Council of Higher Secondary Education
+									</option>
+									<option value="West Bengal State Council of Vocational Education and Training">
+										West Bengal State Council of Vocational Education and Training
+									</option>
+									<option value="Board of Secondary Education Kant Shahjahanpur Uttar Pradesh">
+										Board of Secondary Education Kant Shahjahanpur Uttar Pradesh
+									</option>
+									<option value="The West Bengal Council of Rabindra Open Schooling">
+										The West Bengal Council of Rabindra Open Schooling
+									</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2" for="EI_gradDiscipline">
+								Department (Graduation):
+							</label>
+							<div class="col-md-6">
+								<select class="form-control" id="EI_gradDiscipline" name="EI_gradDiscipline">
+									<option value="NULL">
+										NO_GRADUATION_DISCIPLINE_FILTER
+									</option>
+									<option value="Computer Science">
+										Computer Science
+									</option>
+									<option value="Electronics and Communication">
+										Electronics and Communication
+									</option>
+									<option value="Computational Biology">
+										Computational Biology
+									</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2" for="EI_postGradDiscipline">
+								Department (Post Graduation):
+							</label>
+							<div class="col-md-6">
+								<select class="form-control" id="EI_postGradDiscipline" name="EI_postGradDiscipline">
+									<option value="NULL">
+										NO_POST_GRADUATION_DISCIPLINE_FILTER
+									</option>
+									<option value="Computer Science">
+										Computer Science
+									</option>
+									<option value="Electronics and Communication">
+										Electronics and Communication
+									</option>
+									<option value="Computational Biology">
+										Computational Biology
+									</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2" for="EI_gradUniversity">
+								University (Graduation):
+							</label>
+							<div class="col-md-6">
+								<input type="text" class="form-control" id="EI_gradUniversity" name="EI_gradUniversity" placeholder="Enter University Name" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2" for="EI_postGradUniversity">
+								University (Post Graduation):
+							</label>
+							<div class="col-md-6">
+								<input type="text" class="form-control" id="EI_postGradUniversity" name="EI_postGradUniversity" placeholder="Enter University Name" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2" for="EI_gradState">
+								State (Graduation):
+							</label>
+							<div class="col-md-6 form">
+								<select class="form-control" id="EI_gradState" name="EI_gradState">
+									<option value="NULL">NO_STATE_FILTER</option>
+									<option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+									<option value="Andhra Pradesh">Andhra Pradesh</option>
+									<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+									<option value="Assam">Assam</option>
+									<option value="Bihar">Bihar</option>
+									<option value="Chandigarh">Chandigarh</option>
+									<option value="Chhatisgarh">Chhatisgarh</option>
+									<option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+									<option value="Daman and Diu">Daman and Diu</option>
+									<option value="Delhi">Delhi</option>
+									<option value="Goa">Goa</option>
+									<option value="Gujarat">Gujarat</option>
+									<option value="Haryana">Haryana</option>
+									<option value="Himachal Pradesh">Himachal Pradesh</option>
+									<option value="Jammu and Kashmir">Jammu and Kashmir</option>
+									<option value="Jharkhand">Jharkhand</option>
+									<option value="Karnataka">Karnataka</option>
+									<option value="Kerala">Kerala</option>
+									<option value="Lakshadweep">Lakshadweep</option>
+									<option value="Madhya Pradesh">Madhya Pradesh</option>
+									<option value="Maharashtra">Maharashtra</option>
+									<option value="Manipur">Manipur</option>
+									<option value="Meghalaya">Meghalaya</option>
+									<option value="Mizoram">Mizoram</option>
+									<option value="Nagaland">Nagaland</option>
+									<option value="Orissa">Orissa</option>
+									<option value="Pondicherry">Pondicherry</option>
+									<option value="Punjab">Punjab</option>
+									<option value="Rajasthan">Rajasthan</option>
+									<option value="Sikkim">Sikkim</option>
+									<option value="Tamil Nadu">Tamil Nadu</option>
+									<option value="Tripura">Tripura</option>
+									<option value="Uttaranchal">Uttaranchal</option>
+									<option value="Uttar Pradesh">Uttar Pradesh</option>
+									<option value="West Bengal">West Bengal</option>
+									<option value="Other">Other</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2" for="EI_postGradState">
+								State (Post Graduation):
+							</label>
+							<div class="col-md-6">
+								<select class="form-control" id="EI_postGradState" name="EI_postGradState">
+									<option value="NULL">NO_STATE_FILTER</option>
+									<option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+									<option value="Andhra Pradesh">Andhra Pradesh</option>
+									<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+									<option value="Assam">Assam</option>
+									<option value="Bihar">Bihar</option>
+									<option value="Chandigarh">Chandigarh</option>
+									<option value="Chhatisgarh">Chhatisgarh</option>
+									<option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+									<option value="Daman and Diu">Daman and Diu</option>
+									<option value="Delhi">Delhi</option>
+									<option value="Goa">Goa</option>
+									<option value="Gujarat">Gujarat</option>
+									<option value="Haryana">Haryana</option>
+									<option value="Himachal Pradesh">Himachal Pradesh</option>
+									<option value="Jammu and Kashmir">Jammu and Kashmir</option>
+									<option value="Jharkhand">Jharkhand</option>
+									<option value="Karnataka">Karnataka</option>
+									<option value="Kerala">Kerala</option>
+									<option value="Lakshadweep">Lakshadweep</option>
+									<option value="Madhya Pradesh">Madhya Pradesh</option>
+									<option value="Maharashtra">Maharashtra</option>
+									<option value="Manipur">Manipur</option>
+									<option value="Meghalaya">Meghalaya</option>
+									<option value="Mizoram">Mizoram</option>
+									<option value="Nagaland">Nagaland</option>
+									<option value="Orissa">Orissa</option>
+									<option value="Pondicherry">Pondicherry</option>
+									<option value="Punjab">Punjab</option>
+									<option value="Rajasthan">Rajasthan</option>
+									<option value="Sikkim">Sikkim</option>
+									<option value="Tamil Nadu">Tamil Nadu</option>
+									<option value="Tripura">Tripura</option>
+									<option value="Uttaranchal">Uttaranchal</option>
+									<option value="Uttar Pradesh">Uttar Pradesh</option>
+									<option value="West Bengal">West Bengal</option>
+									<option value="Other">Other</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2" for="EI_XBoardPerc">
+								Class X Board Percentage:
+							</label>
+							<div class="col-md-6">
+								<div class="col-md-4 checkbox">
+									<input type="checkbox" id="EI_XBoardPerc_GT" name="EI_XBoardPerc_CB" value="GT" /> Greater Than
+								</div>
+								<div class="col-md-4 checkbox">
+									<input type="checkbox" id="EI_XBoardPerc_EQ" name="EI_XBoardPerc_CB" value="EQ" /> Equals
+								</div>
+								<div class="col-md-4 checkbox">
+									<input type="checkbox" id="EI_XBoardPerc_LT" name="EI_XBoardPerc_CB" value="LT" /> Lesser Than
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2" for="EI_XBoardPerc">
+							</label>
+							<div class="col-md-6">
+								<input type="text" class="form-control" id="EI_XBoardPerc" name="EI_XBoardPerc" placeholder="Percent" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2" for="EI_XIIBoardPerc">
+								Class XII Board Percentage:
+							</label>
+							<div class="col-md-6">
+								<div class="col-md-4 checkbox">
+									<input type="checkbox" id="EI_XIIBoardPerc_GT" name="EI_XIIBoardPerc_CB" value="GT" /> Greater Than
+								</div>
+								<div class="col-md-4 checkbox">
+									<input type="checkbox" id="EI_XIIBoardPerc_EQ" name="EI_XIIBoardPerc_CB" value="EQ" /> Equals
+								</div>
+								<div class="col-md-4 checkbox">
+									<input type="checkbox" id="EI_XIIBoardPerc_LT" name="EI_XIIBoardPerc_CB" value="LT" /> Lesser Than
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2" for="EI_XIIBoardPerc">
+							</label>
+							<div class="col-md-6">
+								<input type="text" class="form-control" id="EI_XIIBoardPerc" name ="EI_XIIBoardPerc" placeholder="Percent" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2" for="EI_gradPerc">
+								Graduation Marks Percentage:
+							</label>
+							<div class="col-md-6">
+								<div class="col-md-4 checkbox">
+									<input type="checkbox" id="EI_gradPerc_GT" name="EI_gradPerc_CB" value="GT" /> Greater Than
+								</div>
+								<div class="col-md-4 checkbox">
+									<input type="checkbox" id="EI_gradPerc_EQ" name="EI_gradPerc_CB" value="EQ" /> Equals
+								</div>
+								<div class="col-md-4 checkbox">
+									<input type="checkbox" id="EI_gradPerc_LT" name="EI_gradPerc_CB" value="LT" /> Lesser Than
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2" for="EI_gradPerc">
+							</label>
+							<div class="col-md-6">
+								<input type="text" class="form-control" id="EI_gradPerc" name="EI_gradPerc" placeholder="Percent" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2" for="EI_postGradPerc">
+								Post Graduation Marks Percentage:
+							</label>
+							<div class="col-md-6">
+								<div class="col-md-4 checkbox">
+									<input type="checkbox" id="EI_postGradPerc_GT" name="EI_postGradPerc_CB" value="GT" /> Greater Than
+								</div>
+								<div class="col-md-4 checkbox">
+									<input type="checkbox" id="EI_postGradPerc_EQ" name="EI_postGradPerc_CB" value="EQ" /> Equals
+								</div>
+								<div class="col-md-4 checkbox">
+									<input type="checkbox" id="EI_postGradPerc_LT" name="EI_postGradPerc_CB" value="LT" /> Lesser Than
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2" for="EI_postGradPerc">
+							</label>
+							<div class="col-md-6">
+								<input type="text" class="form-control" id="EI_postGradPerc" name="EI_postGradPerc" placeholder="Percent" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2" for="EI_gateScore">
+								GATE Score:
+							</label>
+							<div class="col-md-6">
+								<div class="col-md-4 checkbox">
+									<input type="checkbox" id="EI_gateScore_GT" name="EI_gateScore_CB" value="GT" /> Greater Than
+								</div>
+								<div class="col-md-4 checkbox">
+									<input type="checkbox" id="EI_gateScore_EQ" name="EI_gateScore_CB" value="EQ" /> Equals
+								</div>
+								<div class="col-md-4 checkbox">
+									<input type="checkbox" id="EI_gateScore_LT" name="EI_gateScore_C" value="LT" /> Lesser Than
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2" for="EI_gateScore">
+							</label>
+							<div class="col-md-6">
+								<input type="text" class="form-control" id="EI_gateScore" name="EI_gateScore" placeholder="Percent" />
+							</div>
+						</div>
+					</div>
+					<div id="menu2" class="tab-pane fade">
+						<br/>
+						<div class="form-group">
+							<label class="control-label col-md-2" for="Submit_datedFrom">
+								Applications Dated From:
+							</label>
+							<div class="col-md-6">
+								<input type="date" class="form-control" id="Submit_datedFrom" name="Submit_datedFrom" placeholder="DD-MM-YYYY"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2" for="Submit_datedUpto">
+								Applications Dated Upto:
+							</label>
+							<div class="col-md-6">
+								<input type="date" class="form-control" id="Submit_datedUpto" name="Submit_datedUpto" placeholder="DD-MM-YYYY"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2" for="submitButton">
+							</label>
+							<div class="col-md-6">
+								<input type="submit" id="submitButton" name="submitButton" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<div id="errors">
+		</div>
+
+		<!-- jQuery -->
+		<script src="./js/jquery.js"></script>
+		<!-- Bootstrap Core JavaScript -->
+		<script src="./js/bootstrap.min.js"></script>
+		<script src="./js/myjs.js"></script>
+
+	</body>
+</html>
